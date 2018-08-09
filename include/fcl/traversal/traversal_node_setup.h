@@ -1192,6 +1192,9 @@ bool initialize(MeshShapeConservativeAdvancementTraversalNodeOBBRSS<S, NarrowPha
   node.tf2 = tf2;
   node.nsolver = nsolver;
 
+  node.vertices = model1.vertices;
+  node.tri_indices = model1.tri_indices;
+
   node.w = w;
 
   computeBV<OBBRSS, S>(model2, Transform3f(), node.model2_bv);
