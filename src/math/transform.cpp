@@ -38,6 +38,7 @@
 #include "fcl/math/constants.h"
 #include "fcl/math/transform.h"
 #include <cassert>
+#include <limits>
 
 namespace fcl
 {
@@ -188,7 +189,7 @@ void Quaternion3f::fromAxisAngle(const Vec3f& axis, FCL_REAL angle)
 void Quaternion3f::toAxisAngle(Vec3f& axis, FCL_REAL& angle) const
 {
   double sqr_length = data[1] * data[1] + data[2] * data[2] + data[3] * data[3];
-  if(sqr_length > 0)
+  if(sqr_length > std::numeric_limits<double>::epsilon())
   {
     angle = 2.0 * acos((double)data[0]);
     double inv_length = 1.0 / sqrt(sqr_length);
